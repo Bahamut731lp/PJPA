@@ -1,6 +1,7 @@
 #IDE files VSCODE, Pycharm etc.
 */.idea
 */.vscode
+.vscode
 
 # Cache and bytecode
 *~
