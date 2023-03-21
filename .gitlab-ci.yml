@@ -1,0 +1,18 @@
+image: python:latest
+
+stages:
+    - test
+
+run_tests:
+    stage: test
+    image: python:3.9
+    before_script:
+        - pip install -r requirements.txt
+    script:
+        - pytest -v
+
+run_linter:
+    stage: test
+    image: python:3.9
+    script:
+        py -m pylint
