@@ -12,7 +12,7 @@ def triangle(strana_a: float, strana_b: float, strana_c: float):
     Tak jako je to ve známé matematické poučce. 
     """
 
-    if any(map(lambda x: x <= 0, [strana_a, strana_b, strana_c])): 
+    if any(map(lambda x: x <= 0, [strana_a, strana_b, strana_c])):
         return False
 
     return strana_a ** 2 + strana_b ** 2 == strana_c ** 2
