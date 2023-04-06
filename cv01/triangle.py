@@ -3,7 +3,7 @@
 Zakladni sablona pro prvni cviceni
 """
 
-def triangle(a: float, b: float, c: float):
+def triangle(strana_a: float, strana_b: float, strana_c: float):
     """
     Funkce vrací True nebo False, podle toho zda strany a, b, c mohou tvořit
     pravoúhlý trojúhelník
@@ -12,6 +12,7 @@ def triangle(a: float, b: float, c: float):
     Tak jako je to ve známé matematické poučce. 
     """
 
-    if any(map(lambda x: x <= 0, [a, b, c])): return False
+    if any(map(lambda x: x <= 0, [strana_a, strana_b, strana_c])): 
+        return False
 
-    return a ** 2 + b ** 2 == c ** 2
+    return strana_a ** 2 + strana_b ** 2 == strana_c ** 2
