@@ -1,0 +1,2 @@
+Obvious Functionality When looking at the app directory, it should be obvious
+what kinds of things the application does. 

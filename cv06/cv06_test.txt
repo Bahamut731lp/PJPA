@@ -1,0 +1,35 @@
+Obvious Functionality When looking at the app directory, it should be obvious
+what kinds of things the application does. This architecture highly values the
+"glance factor" of the application structure as well as being obvious in where
+to find things while working with the project.
+
+aaaa bbbb aaaa cccc aaaa
+
+Framework Independence Your application does not need to be a web app, api app,
+desktop app, or console app. It also doesn't need to be a MySQL, MongoDB, or
+SQLServer app. Your app is just a set of data structures and functionality
+related to those data structures. How your app delivers your app or stores data
+are implementation details.
+
+Implementation details can and should change based on your implementation needs,
+your app logic shouldn't have to change when your implementation requirements
+do.
+
+Extreme Testability This is a TDD biased structure. Each layer and pattern is
+designed with testing in mind. More importantly, we designed this architecture
+so that testing would be easier for developers, which should lead to more
+testing and better software quality.
+
+Maintenance Minded When given the choice between short term productivity or long
+term maintenance, we believe that the right decision is long term maintenance.
+Many decisions have been made that are counterintuitive from a short term
+productivity standpoint, but allow for much easier maintenance. Obviousness,
+framework independence, and testability all work together to make the day to day
+maintenance more enjoyable.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
