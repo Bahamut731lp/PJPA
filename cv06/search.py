@@ -40,6 +40,10 @@ def match_regexes(word: str, counter: dict):
     """
     Funkce najde hledané patterny ve slově
     """
+
+    if word.strip() == "":
+        pass
+
     two_vowels_result = regex_two_vowels.search(word)
     if two_vowels_result is not None:
         counter["two_vowels"] += 1
@@ -52,6 +56,16 @@ def match_regexes(word: str, counter: dict):
     if len(six_characters_result) >= 6:
         counter["six_characters"] += 1
 
+def create_counter():
+    """
+    Funkce pro vytvoření čítače výsledků
+    """
+    return {
+        "two_vowels": 0,
+        "three_vowels": 0,
+        "six_characters": 0,
+        "duplicates_in_line": 0
+    }
 
 def main(file_name: str):
     """
@@ -61,12 +75,7 @@ def main(file_name: str):
     if not os.path.isfile(file_name):
         pass
 
-    counter = {
-        "two_vowels": 0,
-        "three_vowels": 0,
-        "six_characters": 0,
-        "duplicates_in_line": 0
-    }
+    counter = create_counter()
 
     with open(file_name, "r", encoding="utf-8") as file:
         rows = file.readlines()
