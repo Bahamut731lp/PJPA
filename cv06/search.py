@@ -31,8 +31,8 @@ Podrobnější zadání včetně příkladu je jako obvykle na elearning.tul.cz
 import os
 import re
 
-regex_two_vowels = re.compile(r"[aeiou]{2}",  re.IGNORECASE)
-regex_three_vowels = re.compile(r"[aeiou]", re.IGNORECASE)
+regex_two_vowels = re.compile(r"[aeiyou]{2}",  re.IGNORECASE)
+regex_three_vowels = re.compile(r"[aeiyou]", re.IGNORECASE)
 regex_six_characters = re.compile(r".", re.IGNORECASE)
 regex_duplicate_words = re.compile(r"\b(\w+)\b(.*)\b\1\b", re.IGNORECASE)
 
@@ -90,13 +90,14 @@ def main(file_name: str):
         rows = list(map(lambda x: x.split(" "), rows))
 
         # Z pole polí uděláme pole stringů
-        words = [word for words in rows for word in words]
+        words = list(set({word.lower() for words in rows for word in words}))
 
         for word in words:
             match_regexes(word, counter)
 
-    print(counter)
+    for _, value in counter.items():
+        print(value)
 
 
 if __name__ == '__main__':
-    main('cv06_test.txt')
+    main('simple.txt')
