@@ -33,7 +33,7 @@ import re
 
 regex_two_vowels = re.compile(r"[aeiyou]{2}",  re.IGNORECASE)
 regex_three_vowels = re.compile(r"[aeiyou]", re.IGNORECASE)
-regex_six_characters = re.compile(r".", re.IGNORECASE)
+regex_six_characters = re.compile(r".{6}", re.IGNORECASE)
 regex_duplicate_words = re.compile(r"\b(\w+)\b(.*)\b\1\b", re.IGNORECASE)
 
 def match_regexes(word: str, counter: dict):
@@ -52,8 +52,8 @@ def match_regexes(word: str, counter: dict):
     if len(three_vowels_result) >= 3:
         counter["three_vowels"] += 1
 
-    six_characters_result = regex_six_characters.findall(word)
-    if len(six_characters_result) >= 6:
+    six_characters_result = regex_six_characters.search(word)
+    if six_characters_result is not None:
         counter["six_characters"] += 1
 
 def create_counter():
@@ -81,16 +81,16 @@ def main(file_name: str):
         rows = file.readlines()
         # Ošetření new-line znaků a rozdělení podle mezery
         rows = list(map(lambda row: row.strip(), rows))
-
         for radek in rows:
             has_duplicates = regex_duplicate_words.search(radek)
             if has_duplicates is not None:
                 counter["duplicates_in_line"] += 1
 
         rows = list(map(lambda x: x.split(" "), rows))
-
         # Z pole polí uděláme pole stringů
-        words = list(set({word.lower() for words in rows for word in words}))
+
+        words = set({re.sub(r"[^A-Za-z]+", '', word.lower()) for words in rows for word in words})
+        words = list(words)
 
         for word in words:
             match_regexes(word, counter)
@@ -100,4 +100,4 @@ def main(file_name: str):
 
 
 if __name__ == '__main__':
-    main('simple.txt')
+    main('cv06_test.txt')
