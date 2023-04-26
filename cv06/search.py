@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """ 
 Úkol 6.
 Vaším dnešním úkolem je vytvořit program, který o zadaném textu zjistí některé
@@ -100,4 +98,4 @@ def main(file_name: str):
 
 
 if __name__ == '__main__':
-    main('cv06_test.txt')
+    main('simple.txt')
