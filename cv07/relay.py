@@ -140,6 +140,7 @@ def main():
     for racer in html_data:
         # Víme, že tam je příjmení, ale ještě musíme zjistit, jestli tam je i to jméno
         # (abychom někoho nezapočítali 2x jenom kvůli stejnému příjmení)
+
         if racer["lastname"] in json_data:
             candidates = json_data.get(racer["lastname"])
             is_in_list = False
@@ -164,6 +165,13 @@ def main():
                     "time": racer.get("time"),
                     "no_match": " ".join([racer.get("firstname"), racer.get("lastname")])
                 })
+        else:
+            result.append({
+                "id": False,
+                "result": racer.get("result"),
+                "time": racer.get("time"),
+                "no_match": " ".join([racer.get("firstname"), racer.get("lastname")])
+            })
 
     output_json(result)
 
