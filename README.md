@@ -8,6 +8,8 @@ Kódy k předmětu Programování v jazyce Python na TUL
 <img src="https://img.shields.io/badge/Cvičení--2-10-success?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/Cvičení--3-10-success?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/Cvičení--4-10-success?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Cvičení--5-10-success?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Cvičení--6-10-success?style=for-the-badge"/>
 
 ---
 ## Workflows:
