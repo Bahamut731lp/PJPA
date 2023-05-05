@@ -129,7 +129,4 @@ class Card:
 
 
 if __name__ == '__main__':
-    test = Card(15, "s")
-    print(test.rank)
-    print(test.suit)
-    print(test)
+    pass

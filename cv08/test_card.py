@@ -139,3 +139,18 @@ def test_greater_equal_then(rank, suit, expected):
     t_card1 = card.Card(rank, suit)
     t_card2 = card.Card(7, "s")
     assert (t_card1 >= t_card2) == expected
+
+
+@pytest.mark.parametrize('rank, suit, expected', [
+    (3, "s", True),
+    (7, "t", False),
+    (10, "s", True)
+])
+def test_not_equal(rank, suit, expected):
+    """
+    Test porovnání, první karta je větší nebo rovna než druhá
+    """
+    t_card1 = card.Card(rank, suit)
+    t_card2 = card.Card(7, "s")
+    assert (t_card1 != t_card2) == expected
+
