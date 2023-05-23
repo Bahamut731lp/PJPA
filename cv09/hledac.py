@@ -25,6 +25,16 @@ import argparse
 import os
 from pathlib import Path
 
+parser = argparse.ArgumentParser(
+    prog='Hledac',
+    description='Unixový GREP z Wishe.',
+    exit_on_error=False
+)
+parser.add_argument("-f", "--filename", help="Jméno souboru k analýze")
+parser.add_argument("-s", "--search", action="extend",
+                    nargs="+", help="Hledané výrazy")
+
+
 def readfile(filepath: Path):
     """
         Funkce pro přečtení souboru
@@ -37,11 +47,13 @@ def readfile(filepath: Path):
         lines = filehandle.readlines()
         return lines
 
+
 def number_them_lines(lines: list[str]):
     """
         Funkce pro očíslování řádků seznamu
     """
     return [f"{i + 1}:{x}" for i, x in enumerate(lines)]
+
 
 def filter_them_lines(lines: list[str], expressions: list[str]):
     """
@@ -51,17 +63,16 @@ def filter_them_lines(lines: list[str], expressions: list[str]):
     return list(filter(lambda line: all(expr in line for expr in expressions), lines))
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        prog='Hledac',
-        description='Unixový GREP z Wishe.',
-        exit_on_error=False
-    )
-    parser.add_argument("-f", "--filename", help="Jméno souboru k analýze")
-    parser.add_argument("-s", "--search", action="extend", nargs="+", help="Hledané výrazy")
+def main(cli_args = None):
+    """
+        Hlavní metoda programu
+    """
 
+    if cli_args is None:
+        cli_args = []
+    
     try:
-        args = parser.parse_args()
+        args = parser.parse_args(cli_args)
 
         if args.filename is None:
             raise ValueError()
@@ -72,8 +83,14 @@ if __name__ == '__main__':
 
         if args.search is None:
             print("".join(numbered))
-        else:
-            print("".join(filter_them_lines(numbered, args.search)))
+            return 0
+        
+        print("".join(filter_them_lines(numbered, args.search)))
+        return 1
 
     except (ValueError, argparse.ArgumentError):
         parser.print_help()
+        return -1
+
+if __name__ == '__main__':
+    main()
