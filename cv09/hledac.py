@@ -70,7 +70,7 @@ def main(cli_args = None):
 
     if cli_args is None:
         cli_args = []
-    
+
     try:
         args = parser.parse_args(cli_args)
 
@@ -84,7 +84,7 @@ def main(cli_args = None):
         if args.search is None:
             print("".join(numbered))
             return 0
-        
+
         print("".join(filter_them_lines(numbered, args.search)))
         return 1
 
