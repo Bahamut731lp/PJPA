@@ -24,6 +24,7 @@ program opět vypsat chybu nebo nápovědu.
 import argparse
 import os
 from pathlib import Path
+import sys
 
 parser = argparse.ArgumentParser(
     prog='Hledac',
@@ -67,9 +68,6 @@ def main(cli_args = None):
     """
         Hlavní metoda programu
     """
-
-    if cli_args is None:
-        cli_args = []
 
     try:
         args = parser.parse_args(cli_args)
